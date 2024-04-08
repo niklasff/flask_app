@@ -27,8 +27,9 @@ def sana_haku(input_text):
                     replaced_words.append(f"{word};{korvaus_b}")
 
     for word in input_text.split():
-     if "." and "�" in word:
-        replaced_words.append(f"{word};{korvaus_a}")
+     if "," and "�" in word:
+            korvaus_a = re.sub(r"�","ä",word,flags=re.IGNORECASE)
+            replaced_words.append(f"{word};{korvaus_a}")
 
     with open("replace_patterns2.txt", "w", encoding="utf-8") as output_file:
         for replaced_word in replaced_words:
