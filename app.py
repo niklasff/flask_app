@@ -13,20 +13,24 @@ def sana_haku(input_text):
     with open("sanat.txt", "r", encoding="utf-8") as file:
         suomisanat = file.read()
 
-    linjat_split = re.split(r"[\s,\.]", input_text)
+    linjat_split = re.split(r"[\s,]", input_text)
 
     for word in linjat_split:
-        if "�" in word:
-            korvaus_a = word.replace("�", "ä")
-            if korvaus_a in suomisanat:
-                replaced_words.append(f"{word};{korvaus_a}")
+            if "�" in word:
+                
+                korvaus_a = re.sub(r"�","ä",word,flags=re.IGNORECASE)
+                korvaus_b = re.sub(r"�","ö",word, flags=re.IGNORECASE)
 
-            with open("replace_patterns2.txt", "w", encoding="utf-8") as output_file:
-                for replaced_word in replaced_words:
-                    output_file.write(replaced_word + "\n")
+                if korvaus_a in suomisanat:
+                    replaced_words.append(f"{word};{korvaus_a}")
+                elif korvaus_b in suomisanat:
+                    replaced_words.append(f"{word};{korvaus_b}")
+
+    with open("replace_patterns2.txt", "w", encoding="utf-8") as output_file:
+        for replaced_word in replaced_words:
+            output_file.write(replaced_word + "\n")
 
     return replaced_words
-
 
 def sana_korvaus(input_text):
     replace_patterns = {}
@@ -38,7 +42,7 @@ def sana_korvaus(input_text):
                 replace_patterns[vaara_sana] = oikea_sana
 
         for word in input_text.split():
-            if word in replace_patterns:
+            if word in replace_patterns: 
                 input_text = input_text.replace(word, replace_patterns[word])
 
     return input_text
