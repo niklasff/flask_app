@@ -1,7 +1,6 @@
 # app.py
 
-from flask import Flask, render_template, request
-
+from flask import Flask, render_template, request, url_for
 app = Flask(__name__)
 
 
@@ -13,23 +12,42 @@ def sana_haku(input_text):
     with open("sanat.txt", "r", encoding="utf-8") as file:
         suomisanat = file.read()
 
-    linjat_split = re.split(r"[\s,]", input_text)
+    with open("sanat_pilkku.txt", "r", encoding="utf-8") as file:
+        suomisanat_pilkku = file.read()
+    
+    with open("sanat_piste.txt", "r", encoding="utf-8") as file:
+        suomisanat_piste = file.read()
 
-    for word in linjat_split:
-            if "�" in word:
-                
-                korvaus_a = re.sub(r"�","ä",word,flags=re.IGNORECASE)
-                korvaus_b = re.sub(r"�","ö",word, flags=re.IGNORECASE)
+    for word in input_text.split():
+        if "�" in word:
+            korvaus_a = re.sub(r"�","ä",word)
+            korvaus_b = re.sub(r"�","ö",word)
 
-                if korvaus_a in suomisanat:
-                    replaced_words.append(f"{word};{korvaus_a}")
-                elif korvaus_b in suomisanat:
-                    replaced_words.append(f"{word};{korvaus_b}")
+            if korvaus_a in suomisanat:
+                replaced_words.append(f"{word};{korvaus_a}")
+            elif korvaus_b in suomisanat:
+                replaced_words.append(f"{word};{korvaus_b}")
 
     for word in input_text.split():
      if "," and "�" in word:
-            korvaus_a = re.sub(r"�","ä",word,flags=re.IGNORECASE)
-            replaced_words.append(f"{word};{korvaus_a}")
+            korvaus_c = re.sub(r"�","ä",word)
+            korvaus_d = re.sub(r"�","ö",word)
+
+            if korvaus_c in suomisanat_pilkku:
+                replaced_words.append(f"{word};{korvaus_c}")
+            elif korvaus_d in suomisanat_pilkku:
+                replaced_words.append(f"{word};{korvaus_d}")
+
+    for word in input_text.split():
+        if "." and "�" in word:
+            korvaus_e = re.sub(r"�","ä",word)
+            korvaus_f = re.sub(r"�","ö",word)
+
+            if korvaus_e in suomisanat_piste:
+                replaced_words.append(f"{word};{korvaus_e}")
+            elif korvaus_f in suomisanat_piste:
+                replaced_words.append(f"{word};{korvaus_f}")
+
 
     with open("replace_patterns2.txt", "w", encoding="utf-8") as output_file:
         for replaced_word in replaced_words:
@@ -52,11 +70,17 @@ def sana_korvaus(input_text):
 
     return input_text
 
-
 @app.route("/")
 def index():
     return render_template("index.html")
 
+@app.route('/index', methods=['GET', 'POST'])
+def cat(): 
+    return render_template('index.html')
+
+@app.route('/tietoa', methods=['GET', 'POST'])
+def tieto():
+    return render_template("tietoa.html")
 
 @app.route("/fix_text", methods=["POST"])
 def fix_text_route():
