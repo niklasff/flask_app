@@ -28,6 +28,16 @@ def sana_haku(input_text):
             elif korvaus_b in suomisanat:
                 replaced_words.append(f"{word};{korvaus_b}")
 
+    for char in input_text.split():
+        x = char.count("�")
+        if "�" in x < 1:
+            korvaus_testi1 = re.sub(r"�","ä",char)
+            replaced_words.append(f"{word};{korvaus_testi1}")
+
+        elif "�" in x < 1:
+            korvaus_testi1 = re.sub(r"�","ä",char)
+            replaced_words.append(f"{word};{korvaus_testi1}")
+
     for word in input_text.split():
      if "," and "�" in word:
             korvaus_c = re.sub(r"�","ä",word)
