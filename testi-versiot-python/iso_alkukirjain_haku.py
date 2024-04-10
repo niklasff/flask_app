@@ -1,4 +1,6 @@
-import re
+def iso_kirjain():
+    
+    import re
 replaced_words = []
 
 with open("sanat.txt", "r", encoding="utf-8") as file:
