@@ -72,6 +72,18 @@
         text-shadow: 1px 1px black;
       }
 
+      .button-reset {
+        background-color: #62529c;
+        border: 1px solid #000000;
+        color: #fff;
+        padding: 15px 20px;
+        text-decoration: none;
+        margin: 4px 4px;
+        cursor: pointer;
+        border-radius: 5px;
+        text-shadow: 1px 1px black;
+      }
+
       .input-container textarea {
         width: 125%;
         height: 225px;
@@ -198,7 +210,13 @@
           >
         </div>
         <div class="button-container">
-          <input type="submit" value="Korjaa!" />
+          <input type="submit" value="Korjaa" />
+          <button
+            class="button-reset"
+            onclick="document.getElementById('input2').value = ''"
+          >
+            Tyhjennä
+          </button>
         </div>
       </div>
     </form>
