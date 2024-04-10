@@ -71,6 +71,7 @@ def sana_haku(input_text):
                             valmis_sana2 = muutettu_eka2.capitalize()
                             replaced_words.append(f"{char};{valmis_sana2}")
 
+
     with open("replace_patterns.txt", "w", encoding="utf-8") as output_file:
         for replaced_word in replaced_words:
             output_file.write(replaced_word + "\n")
@@ -95,10 +96,6 @@ def sana_korvaus(input_text):
 @app.route("/")
 def index():
     return render_template("index.html")
-
-@app.route('/index', methods=['GET', 'POST'])
-def cat(): 
-    return render_template('index.html')
 
 @app.route('/tietoa', methods=['GET', 'POST'])
 def tieto():

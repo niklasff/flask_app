@@ -1,0 +1,9 @@
+<div class="image">
+    <img src="{{url_for('static', filename='kissa.jpg')}}" alt="kissa" />
+</div>
+
+
+
+@app.route('/index', methods=['GET', 'POST'])
+def cat(): 
+    return render_template('index.html')
