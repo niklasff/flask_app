@@ -1,240 +1,74 @@
 <!DOCTYPE html>
 <html lang="fin">
   <head>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Abel&family=Rajdhani:wght@300;400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>sanakorjaus_app</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
     <style>
-      body {
-        display: grid;
-        place-items: center;
-        height: 100vh;
-        margin: 0;
-        background-color: #c3b1e1;
+      .custom-bg-color {
+        background-color: rgb(215, 164, 243);
       }
 
-      .teksti {
-        text-align: center;
-        font-family: "Rajdhani", sans-serif;
-        font-weight: 500;
-        font-size: 120%;
-        color: #f1f1f1;
-        text-shadow: 2px 2px black;
-        text-decoration-line: overline;
-      }
-
-      .container {
-        width: 850px;
-        padding: 100px;
-        border: 1px solid #000000;
-        border-radius: 8px;
-        display: grid;
-        grid-template-columns: 1fr;
-        grid-row-gap: 20px;
-        background-color: #e6e6fa;
-        align-items: center;
-      }
-
-      .input-container {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        margin-right: 75px;
-      }
-
-      .input-container label {
-        text-align: right;
-        margin-right: 15px;
-        font-family: "Rajdhani", sans-serif;
-        font-weight: 500;
+      .form-label {
         font-size: 20px;
       }
-
-      .button-container {
-        text-align: center;
-      }
-
-      input[type="button"],
-      input[type="submit"] {
-        background-color: #62529c;
-        border: 1px solid #000000;
-        color: #fff;
-        padding: 15px 25px;
-        text-decoration: none;
-        margin: 4px 2px;
-        cursor: pointer;
-        border-radius: 5px;
-        text-shadow: 1px 1px black;
-      }
-
-      .button-reset {
-        background-color: #62529c;
-        border: 1px solid #000000;
-        color: #fff;
-        padding: 15px 20px;
-        text-decoration: none;
-        margin: 4px 4px;
-        cursor: pointer;
-        border-radius: 5px;
-        text-shadow: 1px 1px black;
-      }
-
-      .input-container textarea {
-        width: 125%;
-        height: 225px;
-        padding: 10px;
-        resize: none;
-        background-color: #f8f8f8;
-        border: 1px solid #000000;
-        border-radius: 6px;
-      }
-
-      .sidenav {
-        height: 100%;
-        width: 0;
-        position: fixed;
-        z-index: 1;
-        top: 0;
-        left: 0;
-        background-color: #cf9fff;
-        overflow-x: hidden;
-        transition: 0.5s;
-        padding-top: 60px;
-      }
-
-      .sidenav a {
-        padding: 8px 8px 8px 32px;
-        text-decoration: none;
-        font-size: 25px;
-        font-family: "Rajdhani", sans-serif;
-        font-weight: 500;
-        color: #000000;
-        display: block;
-        transition: 0.3s;
-      }
-
-      .sidenav a:hover {
-        color: #f1f1f1;
-      }
-
-      .sidenav .closebtn {
-        position: absolute;
-        top: 0;
-        right: 25px;
-        font-size: 36px;
-        margin-left: 50px;
-      }
-
-      @media screen and (max-height: 450px) {
-        .sidenav {
-          padding-top: 15px;
-        }
-        .sidenav a {
-          text-align: left;
-        }
-      }
-
-      .sidenav-avausnappi {
-        margin-right: 1800px;
-        font-family: "Rajdhani", sans-serif;
-        font-weight: 500;
-        font-size: 25px;
-        cursor: pointer;
-        color: #f1f1f1;
-        text-shadow: 2px 1px black;
-      }
-
-      .footer-container {
-        font-family: "Rajdhani", sans-serif;
-        font-weight: 500;
-      }
-      img {
-        height: 100px;
-        width: 110px;
-        margin-left: 25px;
-        border: solid 1px #000000;
-        border-radius: 5px;
-        opacity: 0.8;
-      }
-      img:hover {
-        transform: scaleX(-1);
-      }
-      .kuva-teksti-container {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-      .footer-container {
-        color: #f1f1f1;
-        text-shadow: 1px 1px black;
-        font-size: 19px;
-      }
     </style>
+
+    
+    
   </head>
+  <body class="custom-bg-color">
 
-  <body>
-    <div id="mySidenav" class="sidenav">
-      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"
-        >&times;</a
-      >
-      <a href="#">Etusivu</a>
-      <a href="/tietoa">Käyttöohjeet</a>
-    </div>
-
-    <div class="sidenav-avausnappi">
-      <span onclick="openNav()">&#9776; Valikko</span>
-    </div>
-
-    <div class="kuva-teksti-container">
-      <div class="teksti">
-        <h1>Tekstin korjausohjelma</h1>
+    <div class="container mb-4">
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <h1 class="mt-5">Tekstin korjausohjelma</h1>
+        </div>
       </div>
     </div>
-    <br />
 
-    <form action="/fix_text" method="post">
-      <div class="container">
-        <div class="input-container">
-          <label for="input1">Korjattava teksti:</label>
-          <textarea id="input1" name="input1">{{ input_text }}</textarea>
-        </div>
-        <div class="input-container">
-          <label for="input2">Korjattu teksti:</label>
-          <textarea id="input2" name="input2" readonly>
+      <div class="row justify-content-center">
+        <div class="col-md-3 text-center">
+          <form action="/fix_text" method="post">
+            <div class="mb-3">
+              <label for="input1" class="form-label">Korjattava teksti:</label>
+              <textarea id="input1" name="input1" class="form-control" rows="8">
+{{ input_text }}</textarea
+              >
+            </div>
+            <div class="mb-3">
+              <label for="input2" class="form-label">Korjattu teksti:</label>
+              <textarea
+                id="input2"
+                name="input2"
+                class="form-control"
+                rows="8"
+                readonly
+              >
 {{ corrected_text }}</textarea
-          >
-        </div>
-        <div class="button-container">
-          <input type="submit" value="Korjaa" />
-          <button
-            class="button-reset"
-            onclick="document.getElementById('input2').value = ''"
-          >
-            Tyhjennä
-          </button>
+              >
+            </div>
+            <div class="d-grid gap-2">
+              <input type="submit" class="btn btn-primary btn-lg" value="Korjaa" />
+              <button
+                type="button"
+                class="btn btn-secondary btn-lg"
+                onclick="document.getElementById('input2').value = ''"
+              >
+                Tyhjennä
+              </button>
+            </div>
+          </form>
         </div>
       </div>
-    </form>
-
-    <script>
-      function openNav() {
-        document.getElementById("mySidenav").style.width = "200px";
-      }
-
-      function closeNav() {
-        document.getElementById("mySidenav").style.width = "0";
-      }
-    </script>
-
-    <div class="footer-container">
-      <footer>
-        <p>Niklas Fonsell 2024</p>
-      </footer>
     </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>
