@@ -1,76 +1,40 @@
-# app.py
+from flask import Flask, render_template, request
+from itertools import product
+import string
 
-from flask import Flask, render_template, request, url_for
 app = Flask(__name__)
 
+def preprocess_word(word):
+    return word.rstrip(string.punctuation)
 
-def sana_haku(input_text):
-    import re
-
+def iso_kirjain(input_text):
     replaced_words = []
 
     with open("sanat.txt", "r", encoding="utf-8") as file:
-        suomisanat = file.read().split()
-
-    with open("sanat_pilkku.txt", "r", encoding="utf-8") as file:
-        suomisanat_pilkku = file.read().split()
-    
-    with open("sanat_piste.txt", "r", encoding="utf-8") as file:
-        suomisanat_piste = file.read().split()
+        suomisanat = set(file.read().split())
 
     for word in input_text.split():
-        if "�" in word:
-            korvaus_a = word.replace(r"�","ä")
-            korvaus_b = word.replace(r"�","ö")
+        positions = [pos for pos, c in enumerate(word) if c == "�"]
+        if positions:
+            print(f'Found in word: {word}, "�" found at positions: {positions}')
 
-            if korvaus_a in suomisanat:
-                replaced_words.append(f"{word};{korvaus_a}")
-            if korvaus_b in suomisanat:
-                replaced_words.append(f"{word};{korvaus_b}")
+            replacements = []
 
-    for word1 in input_text.split():
-     if "," and "�" in word1:
-            korvaus_c = re.sub(r"�","ä",word1)
-            korvaus_d = re.sub(r"�","ö",word1)
+            for replacement_combination in product(["ä", "ö"], repeat=len(positions)):
+                replaced_word = word
+                for pos, replacement_char in zip(positions, replacement_combination):
+                    replaced_word = replaced_word[:pos] + replacement_char + replaced_word[pos + 1:]
+                replacements.append(replaced_word)
 
-            if korvaus_c in suomisanat_pilkku:
-                replaced_words.append(f"{word1};{korvaus_c}")
-            elif korvaus_d in suomisanat_pilkku:
-                replaced_words.append(f"{word1};{korvaus_d}")
+            print(f'All possible replacements: {replacements}')
 
-    for word2 in input_text.split():
-        if "." and "�" in word2:
-            korvaus_e = re.sub(r"�","ä",word2)
-            korvaus_f = re.sub(r"�","ö",word2)
+            word_processed = preprocess_word(word)
 
-            if korvaus_e in suomisanat_piste:
-                replaced_words.append(f"{word2};{korvaus_e}")
-            elif korvaus_f in suomisanat_piste:
-                replaced_words.append(f"{word2};{korvaus_f}")
-
-    for char in input_text.split():
-            x = char.count("�")
-            if "�" in char:
-             if x > 0:
-                muutettu_a = char.replace("�", "ä")
-                muutettu_b = char.replace("�", "ö")
-            
-                for capital in muutettu_a:
-                    etsi_iso_kirjain = capital.isupper()
-                    if etsi_iso_kirjain == True:
-                        muutettu_eka = muutettu_a.lower()
-                        if muutettu_eka in suomisanat:
-                            valmis_sana = muutettu_eka.capitalize()
-                            replaced_words.append(f"{char};{valmis_sana}")
-
-                for capital in muutettu_b:
-                    etsi_iso_kirjain2 = capital.isupper()
-                    if etsi_iso_kirjain2 == True:
-                        muutettu_eka2 = muutettu_b.lower()
-                        if muutettu_eka2 in suomisanat:
-                            valmis_sana2 = muutettu_eka2.capitalize()
-                            replaced_words.append(f"{char};{valmis_sana2}")
-
+            for muutettu_word in replacements:
+                muutettu_word_processed = preprocess_word(muutettu_word)
+                if muutettu_word_processed.lower() in suomisanat or muutettu_word_processed.capitalize() in suomisanat:
+                    replaced_words.append(f"{word};{muutettu_word}")
+                    print(f'Final version {muutettu_word} has been added to "replaced_words"')
 
     with open("replace_patterns.txt", "w", encoding="utf-8") as output_file:
         for replaced_word in replaced_words:
@@ -90,10 +54,12 @@ def sana_korvaus(input_text):
         for word in input_text.split():
             if word in replace_patterns: 
                 input_text = input_text.replace(word, replace_patterns[word])
+        
+        print("Corrected text:", input_text)
 
     return input_text
 
-@app.route("/")
+@app.route("/") 
 def index():
     return render_template("index.html")
 
@@ -104,7 +70,7 @@ def tieto():
 @app.route("/fix_text", methods=["POST"])
 def fix_text_route():
     input_text = request.form["input1"]
-    replaced_words = sana_haku(input_text)
+    replaced_words = iso_kirjain(input_text)
     corrected_text = sana_korvaus(input_text)
     return render_template(
         "index.html", corrected_text=corrected_text, replaced_words=replaced_words
