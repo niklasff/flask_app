@@ -51,13 +51,19 @@ def sana_korvaus(input_text):
                 vaara_sana, oikea_sana = parts
                 replace_patterns[vaara_sana] = oikea_sana
 
-        for word in input_text.split():
-            if word in replace_patterns: 
-                input_text = input_text.replace(word, replace_patterns[word])
-        
-        print("Corrected text:", input_text)
+    corrected_words = []
+    words = input_text.split()
+    for word in words:
+        if word in replace_patterns:
+            corrected_words.append(replace_patterns[word])
+        else:
+            corrected_words.append(word)
 
-    return input_text
+    corrected_text = ' '.join(corrected_words)
+    
+    print("Corrected text:", corrected_text)
+
+    return corrected_text
 
 @app.route("/") 
 def index():

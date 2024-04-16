@@ -11,19 +11,19 @@
 
     <style>
       .custom-bg-color {
-        background-color: #DCF4FF;
+        background-color: #dcf4ff;
       }
 
       .form-label {
         font-size: 20px;
       }
-    </style>
 
-    
-    
+      .container-above-footer {
+        margin-bottom: 140px;
+      }
+    </style>
   </head>
   <body class="custom-bg-color">
-
     <div class="container mb-4">
       <div class="row">
         <div class="col-md-12 text-center">
@@ -32,41 +32,56 @@
       </div>
     </div>
 
-      <div class="row justify-content-center">
-        <div class="col-md-3 text-center">
-          <form action="/fix_text" method="post">
-            <div class="mb-3">
-              <label for="input1" class="form-label">Korjattava teksti:</label>
-              <textarea id="input1" name="input1" class="form-control" rows="8">
+    <div class="row justify-content-center">
+      <div class="col-md-3 text-center">
+        <form action="/fix_text" method="post">
+          <div class="mb-3">
+            <label for="input1" class="form-label">Korjattava teksti:</label>
+            <textarea id="input1" name="input1" class="form-control" rows="8">
 {{ input_text }}</textarea
-              >
-            </div>
-            <div class="mb-3">
-              <label for="input2" class="form-label">Korjattu teksti:</label>
-              <textarea
-                id="input2"
-                name="input2"
-                class="form-control"
-                rows="8"
-                readonly
-              >
+            >
+          </div>
+          <div class="mb-3">
+            <label for="input2" class="form-label">Korjattu teksti:</label>
+            <textarea
+              id="input2"
+              name="input2"
+              class="form-control"
+              rows="8"
+              readonly
+            >
 {{ corrected_text }}</textarea
-              >
-            </div>
-            <div class="d-grid gap-2">
-              <input type="submit" class="btn btn-primary btn-lg" value="Korjaa" />
-              <button
-                type="button"
-                class="btn btn-secondary btn-lg"
-                onclick="document.getElementById('input2').value = ''"
-              >
-                Tyhjennä
-              </button>
-            </div>
-          </form>
-        </div>
+            >
+          </div>
+          <div class="d-grid gap-2">
+            <input
+              type="submit"
+              class="btn btn-primary btn-lg"
+              value="Korjaa"
+            />
+            <button
+              type="button"
+              class="btn btn-secondary btn-lg"
+              onclick="document.getElementById('input2').value = ''"
+            >
+              Tyhjennä
+            </button>
+          </div>
+        </form>
       </div>
     </div>
+
+    <div class="container-above-footer"></div>
+
+    <footer class="text-center">
+      <div class="container p-4"></div>
+      <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
+        © 2024:
+        <a class="text-dark" href="https://github.com/niklasff"
+          >Niklas Fonsell</a
+        >
+      </div>
+    </footer>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
