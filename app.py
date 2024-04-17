@@ -76,7 +76,7 @@ def index():
 def tieto():
     return render_template("tietoa.html")
 
-@app.route('/index', methods=['GET', 'POST'])
+@app.route('/kotisivu', methods=["GET", "POST"])
 def kotisivu():
     return render_template("index.html")
 
