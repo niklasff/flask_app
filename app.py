@@ -7,7 +7,7 @@ app = Flask(__name__)
 def preprocess_word(word):
     return word.rstrip(string.punctuation)
 
-def iso_kirjain(input_text):
+def sana_haku(input_text):
     replaced_words = []
 
     with open("sanat.txt", "r", encoding="utf-8") as file:
@@ -76,10 +76,14 @@ def index():
 def tieto():
     return render_template("tietoa.html")
 
+@app.route('/index', methods=['GET', 'POST'])
+def kotisivu():
+    return render_template("index.html")
+
 @app.route("/fix_text", methods=["POST"])
 def fix_text_route():
     input_text = request.form["input1"]
-    replaced_words = iso_kirjain(input_text)
+    replaced_words = sana_haku(input_text)
     corrected_text, unreplaced_words = sana_korvaus(input_text)
     return render_template(
         "index.html", corrected_text=corrected_text, replaced_words=replaced_words, unreplaced_words = unreplaced_words

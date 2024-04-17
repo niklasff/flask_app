@@ -1,78 +1,119 @@
 <!DOCTYPE html>
 <html lang="fin">
-  <head>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Abel&family=Rajdhani:wght@300;400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Käyttöohjeet</title>
 
-    <style>
-      body {
-        display: grid;
-        place-items: center;
-        height: 100vh;
-        margin: 0;
-        background-color: #c3b1e1;
-      }
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>sanakorjaus_app</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet" />
 
-      .teksti {
-        text-align: center;
-        margin-bottom: 20px;
-        font-family: "Rajdhani", sans-serif;
-        font-weight: 500;
-        font-size: 120%;
-      }
+  <style>
+    .custom-bg-color {
+      background-color: #dcf4ff;
+      font-family: "Quicksand", sans-serif;
+    }
 
-      .container {
-        width: 850px;
-        height: 625px;
-        padding: 100px;
-        border: 1px solid #000000;
-        border-radius: 8px;
-        background-color: #e6e6fa;
-        align-items: center;
-      }
+    .form-label {
+      font-size: 20px;
+    }
 
-      a:link {
-        background-color: #e6e6fa;
-        padding: 14px 25px;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-        font-family: "Rajdhani", sans-serif;
-        font-weight: 500;
-        font-size: 120%;
-        border: solid 1px;
-      }
+    .container-above-footer {
+      margin-bottom: 70px;
+    }
 
-      a:hover,
-      a:active {
-        background-color: rgba(220, 220, 220, 0.691);
-      }
-    </style>
-  </head>
+    .container-under-nav {
+      margin-bottom: 35px;
+    }
+    
+    .container-above-text {
+      margin-top: 80px;
+    }
+    .container-text {
+      font-size: 22px;
+    }
+  </style>
+</head>
 
-  <body>
-    <div class="koti-button">
-      <a href="/index">Etusivulle</a>
+<body class="custom-bg-color">
+  <!--NAV-BAR-->
+  <nav class="navbar navbar-expand-lg" style="background-color: #dcf4ff">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Tekstin korjaus</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <a class="nav-link active" aria-current="page" href="/index">Etusivu</a>
+          <a class="nav-link" href="/tietoa">Tietoa</a>
+        </div>
+      </div>
     </div>
-    <div class="container">
-      <div class="teksti">
-        <h1>Käyttöohjeet</h1>
-        <p>
-          Lähtökohta oli luoda sovellus, joka korjaa tekstistä "�" merkit pois,
-          jotka ovat tulleet esim. tiedostojen siirron yhteydessä.
-          <br />
-          Sovellus toimii siten, että ensimmäiseen laatikkoon lisätään teksti,
-          jossa "�" merkkejä ilmenee, jonka jälkeen painetaan korjaa -nappia, joka tulostaa korjatun
-          version alapuolella olevaan laatikkoon
+  </nav>
+  <!--NAV-BAR-->
+
+  <div class="container-above-text"></div>
+ 
+  <div class="container-text">
+  <div class="container border border-dark bg-light">
+    <div class="row text-center">
+      <div class="mb-4">
+      <div class="col-12">
+        <p>tässä on tietoa ohjelmasta
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer luctus erat ante, et rhoncus mi sollicitudin quis.
+          Aliquam consectetur scelerisque molestie. Sed egestas nisl quis semper tristique. Etiam eu dignissim mauris. Cras eu
+          tellus dui. Cras pellentesque justo sed finibus lobortis. Ut vitae tellus nec justo consectetur commodo a a metus.
+          Quisque magna justo, pretium euismod velit quis, bibendum pretium ante.
+        
+          Nam dictum leo lorem, a tincidunt enim pulvinar ac. Nullam in nisl in tellus mattis laoreet tristique eget lectus.
+          Nulla bibendum condimentum vehicula. Pellentesque orci tellus, ornare non dictum nec, accumsan a purus. Maecenas risus
+          nibh, tristique id risus quis, rhoncus pretium est. Mauris sed elit nec mi condimentum lacinia. Vivamus ultricies
+          massa quis interdum commodo.
+        
+          Phasellus quis massa diam. Proin feugiat consectetur iaculis. Duis tristique fringilla sapien, eleifend vestibulum
+          purus blandit non. Ut eget sollicitudin neque, et placerat purus. Nulla consectetur vitae ipsum vitae sodales.
+          Phasellus convallis leo non mauris lacinia ullamcorper. Maecenas vel lectus justo. Donec ut eros lorem. Nam fringilla
+          eget magna sed finibus. Donec efficitur mattis condimentum. Ut fermentum volutpat tortor sit amet dapibus.
+        
+          Ut dignissim, magna eu interdum congue, ante lectus eleifend tortor, et euismod diam risus et ante. Vestibulum
+          eleifend rhoncus rhoncus. Cras nisi purus, venenatis non malesuada quis, blandit non urna. Mauris maximus enim vel
+          enim interdum, et pretium risus tempor. Sed pretium eleifend ipsum, sed dictum ipsum hendrerit sit amet. In hac
+          habitasse platea dictumst. In interdum euismod neque, quis malesuada nibh ornare vestibulum. Nulla fringilla elit est,
+          a rhoncus purus dignissim non. Curabitur metus mi, aliquet id libero ut, pretium luctus tellus. Praesent ullamcorper,
+          dui eget hendrerit aliquet, libero mauris efficitur felis, non rutrum lorem nisl non orci. Maecenas ligula ante,
+          tincidunt non nibh in, ornare malesuada lacus. Aliquam eget velit vitae lacus fermentum dapibus.
+        
+          Vivamus rutrum, nunc eget blandit luctus, elit nunc ornare arcu, ornare pellentesque ante leo at elit. Cras nec mi
+          mattis, sodales ligula quis, vulputate velit. Integer ut dolor neque. In ipsum nulla, varius blandit elit et, tempor
+          lobortis felis. Nam quis est ultrices, facilisis justo vitae, vehicula tellus. Fusce auctor c
         </p>
       </div>
     </div>
-  </body>
+    </div>
+  </div>
+
+  <div class="container-above-footer"></div>
+
+  <footer class="text-center">
+    <div class="container p-4"></div>
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
+      © 2024:
+      <a class="text-dark" href="https://github.com/niklasff">Niklas Fonsell Github</a>
+    </div>
+  </footer>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    function clearTextArea() {
+      document.getElementById("input2").value = "";
+      document.getElementById("output3").value = "";
+    }
+  </script>
+</body>
+
 </html>
