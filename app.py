@@ -44,6 +44,7 @@ def iso_kirjain(input_text):
 
 def sana_korvaus(input_text):
     replace_patterns = {}
+    unreplaced_words = []
     with open("replace_patterns.txt", "r", encoding="utf-8") as file:
         for line in file:
             parts = line.strip().split(";")
@@ -58,12 +59,14 @@ def sana_korvaus(input_text):
             corrected_words.append(replace_patterns[word])
         else:
             corrected_words.append(word)
+            if '�' in word:
+                unreplaced_words.append(word)
 
     corrected_text = ' '.join(corrected_words)
     
     print("Corrected text:", corrected_text)
 
-    return corrected_text
+    return corrected_text, unreplaced_words
 
 @app.route("/") 
 def index():
@@ -77,9 +80,9 @@ def tieto():
 def fix_text_route():
     input_text = request.form["input1"]
     replaced_words = iso_kirjain(input_text)
-    corrected_text = sana_korvaus(input_text)
+    corrected_text, unreplaced_words = sana_korvaus(input_text)
     return render_template(
-        "index.html", corrected_text=corrected_text, replaced_words=replaced_words
+        "index.html", corrected_text=corrected_text, replaced_words=replaced_words, unreplaced_words = unreplaced_words
     )
 
 
