@@ -25,13 +25,15 @@
     }
 
     .container-above-buttons {
-      margin-bottom: 25px;
+      margin-bottom: 30px;
     }
 
     .container-under-nav {
       margin-bottom: 35px;
     }
-    
+    .container-below-buttons {
+      margin-top: 30px;
+    }
   </style>
 </head>
 
@@ -54,80 +56,66 @@
   </nav>
   <!--NAV-BAR-->
 
-  <!--INPUT SYMBOLILLE-->
   <div class="container">
     <div class="row justify-content-center">
-      <div class="col-md-3">
+      <div class="col-md-5">
         <form action="/fix_text" method="POST">
-          <div class="mb-3">
+          <!--INPUT SYMBOLILLE-->
+          <div class="mb-3 text-center">
             <label for="inputSymbol" class="form-label">Merkki korvattavaksi:</label>
             <input type="text" id="inputSymbol" name="inputSymbol" class="form-control" />
           </div>
-      </form>
-      </div>
-    </div>
-  </div>
-  <!--INPUT SYMBOLILLE-->
 
-  <div class="row justify-content-center">
-    <div class="col-md-3 text-center">
-      <form action="/fix_text" method="post">
-        <!--ENSIMMÄINEIN INPUT-->
-        <div class="mb-3">
-          <label for="input1" class="form-label">Korjattava teksti:</label>
-          <textarea id="input1" name="input1" class="form-control" rows="8">
+          <!--ENSIMMÄINEIN INPUT-->
+          <div class="mb-3 text-center">
+            <label for="input1" class="form-label">Korjattava teksti:</label>
+            <textarea id="input1" name="input1" class="form-control" rows="8">
             {{ input_text }}</textarea>
-        </div>
-        <!--ENSIMMÄINEIN INPUT-->
+          </div>
+          <!--ENSIMMÄINEIN INPUT-->
 
-        <!--TOINEN INPUT-->
-        <div class="mb-3">
-          <label for="input2" class="form-label">Korjattu teksti:</label>
-          <textarea id="input2" name="input2" class="form-control" rows="8" readonly>
+          <!--TOINEN INPUT-->
+          <div class="mb-3 text-center">
+            <label for="input2" class="form-label">Korjattu teksti:</label>
+            <textarea id="input2" name="input2" class="form-control" rows="8" readonly>
             {{ corrected_text }}</textarea>
-        </div>
-        <!--TOINEN INPUT-->
+          </div>
+          <!--TOINEN INPUT-->
 
-        <!--NAPIT KORJAA JA TYHJENNÄ-->
-        <div class="row justify-content-center">
-          <div class="col-md-6 text-center">
-            <div class="row">
-              <div class="col-md-6">
-                <div class="d-grid gap-2">
-                  <input type="submit" class="btn btn-primary btn-lg" value="Korjaa" />
+          <!--NAPIT KORJAA JA TYHJENNÄ-->
+          <div class="row justify-content-center">
+            <div class="col-md-6 text-center">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="d-grid gap-2">
+                    <input type="submit" class="btn btn-primary btn-lg" value="Korjaa" />
+                  </div>
                 </div>
-              </div>
-              <div class="col-md-6">
-                <div class="d-grid gap-2">
-                  <button type="button" class="btn btn-secondary btn-lg" onclick="clearTextArea()">Tyhjennä</button>
+                <div class="col-md-6">
+                  <div class="d-grid gap-2">
+                    <button type="button" class="btn btn-secondary btn-lg" onclick="clearTextArea()">Tyhjennä</button>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        <!--NAPIT KORJAA JA TYHJENNÄ-->
-      </form>
-    </div>
-  </div>
+          <!--NAPIT KORJAA JA TYHJENNÄ-->
 
-  <div class="container-above-buttons"></div>
-
-  <div class="row justify-content-center">
-    <div class="col-md-3 text-center">
-      <form action="/fix_text" method="post">
-        <!--OUTPUT, JOHON TULOSTUU SANAT JOITA EI VOITU KORJATA-->
-        <div class="row justify-content-center">
-          <div class="mb-3">
-            <label for="output3" class="form-label">Sanat, joita ei voitu korvata:</label>
-            <textarea id="output3" name="output3" class="form-control" rows="6">
+          <div class="container-below-buttons"></div>
+          <!--OUTPUT, JOHON TULOSTUU SANAT JOITA EI VOITU KORJATA-->
+          <div class="row justify-content-center">
+            <div class="mb-3">
+              <label for="output3" class="form-label">Sanat, joita ei voitu korvata:</label>
+              <textarea id="output3" name="output3" class="form-control" rows="6">
               {% for word in unreplaced_words %}
               {{ word }}
               {% endfor %}
               </textarea>
+            </div>
           </div>
-        </div>
-        <!--OUTPUT, JOHON TULOSTUU SANAT JOITA EI VOITU KORJATA-->
-      </form>
+          <!--OUTPUT, JOHON TULOSTUU SANAT JOITA EI VOITU KORJATA-->
+        </form>
+      </div>
     </div>
   </div>
 
